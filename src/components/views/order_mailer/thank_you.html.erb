@@ -1,0 +1,147 @@
+
+<% content_for :body do %>
+
+            <!-- Email Body -->
+            <tr>
+              <td class="email-body" width="100%" cellpadding="0" cellspacing="0"  style="border-top: 3px solid <%= @order.set_site_color %>">
+                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+                  <!-- Body content -->
+                <tr>
+             <td class="content-cell">
+            <h2 style="text-align: center; color:#555; font-size: 28px">
+            Thank you for your purchase!</h2><br>
+
+            <p>Hi <%= @user.first_name %>,</p>
+
+						<p>We’re excited to help you connect with our audience. Your payment has been processed successfully. A summary of your order is below. If you would like to make some changes, you may do so <a href="https://promotions.whereby.us/orders/<%= @order.id %>/">here</a>.</p>
+
+						<p>Our team is now reviewing your promotion to ensure e-mail spam compliance. We'll reach out to you if we have any questions or concerns.</p>
+
+            <p>You can reach us by replying to this email if you have any questions!</p>
+
+                      	<p>Thanks,</p>
+                      	<br><p><%= @order.set_site_name %> Team</p>
+                      </td>
+                   </tr>
+             </table>
+            </td>
+          </tr>
+  		</table>
+ 	  </td>
+	</tr>
+</table>
+
+<table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center">
+          <table class="email-content" width="100%" cellpadding="0" cellspacing="0"  style="border-top: 3px solid <%= @order.set_site_color %>">
+            <!-- Email Body -->
+            <tr>
+              <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+                  <!-- Body content -->
+                  <tr>
+                    <td class="content-cell">
+                      <table class="purchase" width="100%" cellpadding="0" cellspacing="0" style="padding: 0">
+                        <tr>
+                          <td>
+                            <h3>Order Receipt <span class="text-muted">for ID #<%= @order.id %></span></h3></td>
+                          <td>
+                            <h3 class="align-right"><%= @order.created_at.strftime("%b %d, %Y") %></h3></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <table class="purchase_content" width="100%" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <th class="purchase_heading">
+                                  <p>Description</p>
+                                </th>
+                                <th class="purchase_heading">
+                                  <p class="align-right">Amount</p>
+                                </th>
+                              </tr>
+
+                              <tr>
+                                <td width="80%" class="purchase_item"><%= @order.package.name %></td>
+                                <td class="purchase_item align-right" width="20%">$<%= @order.final_amount ? @order.final_amount / 100 : 0 %>.00</td>
+                              </tr>
+
+                              <tr>
+                                <td width="80%" class="purchase_footer" valign="middle">
+                                  <p class="purchase_total purchase_total--label">Total</p>
+                                </td>
+                                <td width="20%" class="purchase_footer align-right">
+                                <p class="purchase_total">$<%= @order.final_amount ? @order.final_amount / 100 : 0 %>.00</p>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+             		  </table>
+                    </td>
+                </tr>
+             </table>
+            </td>
+          </tr>
+  		</table>
+ 	  </td>
+	</tr>
+</table>
+
+
+<table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+  <td align="center">
+    <table class="email-content" width="100%" cellpadding="0" cellspacing="0"  style="border-top: 3px solid <%= @order.set_site_color %>">
+      <!-- Email Body -->
+      <tr>
+        <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+          <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+          <!-- Body content -->
+            <tr>
+              <td class="content-cell">
+
+
+              <% @promotions.each do |p| %>
+                  <tr>
+                      <td class="attributes_item" style="padding-left: 30px">
+                        <h3>Promo ID #<%= p.id %></h3>
+                        <div><%= p.date == ' ' ? raw("<b>Incomplete</b>") : Date.parse(p.date.to_s).strftime("%b %d, %Y (%A)") %></div>
+                      </td>
+
+                    <% if p.promo_type == 'standard' || p.promo_type == 'event' %>
+                      <td class="attributes_item">
+                        <div style="background-color: rgba(242, 243, 246, 0.24); padding: 1rem; width: 340px";>
+                        <div style="text-align: center"><%= p.emoji %> <u><strong><a href="<%= p.link %>" style="color: #6DC6DD; font-family: Arial; font-size: 14px; "> <%= p.headline %></a></strong></u></div>
+                        <div style="text-align: center; font-family: Arial; font-size: 14px; padding-top: 0.3rem"><%= p.text %></div>
+                        <div style="text-align: center; padding-top: 1rem"><a href="<%= p.link %>"><span class="font-xs" style="color: #6DC6DD;"><u style="font-family: Arial; font-size: 12px;">LEARN MORE &raquo;</u></a></span></div>
+                        </div><br>
+                      </td>
+                    <% else %>
+                      <td class="attributes_item">
+                         <div style="background-color: rgba(242, 243, 246, 0.27); padding: 1.5rem; min-height: 125px; width: 340px";>
+                         <img src="<%= p.logo_url(:thumb) %>" style="clear:left; float:left; padding-right: 13px; width: 100px">
+                         <div style="overflow: hidden;">
+                         <div><%= p.emoji %> <u><strong><a href="<%= p.link %>" style="color: #6DC6DD; font-family: Arial; font-size: 14px;"> <%= p.headline %></a></strong></u></div>
+                         <div style="font-family: Arial; font-size: 14px;padding-top: 0.2rem;"><%= p.text %></div>
+                         <div style=" padding-top: 0.3rem;font-size: 14px;"><a href="<%= p.link %>"><span class="font-xs" style="color: #6DC6DD;"><u style="font-family: Arial; font-size: 12px;">LEARN MORE &raquo;</u></a></span></div>
+                         </div>
+                         </div><br>
+                      </td>
+                    <% end %>
+                  </tr>
+              <% end %>
+
+         </td>
+        </tr>
+        </table>
+        </td>
+        </tr>
+       </td>
+      </tr>
+     </table><br>
+    </table>
+   </td>
+</tr>
+
+
+<% end %>

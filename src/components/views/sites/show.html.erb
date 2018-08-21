@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-header">
+            Site
+          </div>
+          <div class="card-block">
+          	<strong>Id</strong>
+        		<p><%= @site.id %></p>
+            <strong>Name</strong>
+        		<p><%= @site.name %></p>
+             <strong>City</strong>
+            <p><%= @site.city %></p>
+             <strong>State</strong>
+            <p><%= @site.state %></p>
+
+             <strong>Standard Unit Price</strong>
+            <p>$<%= number_with_precision(@site.wbu_s_price, precision: 2) %></p>
+            <strong>Event Unit Price</strong>
+            <p>$<%= number_with_precision(@site.wbu_e_price, precision: 2) %></p>
+            <strong>Topline Unit Price</strong>
+            <p>$<%= number_with_precision(@site.wbu_t_price, precision: 2) %></p>
+            <strong>Number of Subscribers</strong>
+            <p><%= number_with_delimiter(@site.subscribers , :delimiter => ',') %>+</p>
+            <strong>Open Rate</strong>
+            <p><%= @site.open_rate %>%+</p>
+            <strong>Average Household Income</strong>
+            <p>$<%= number_with_delimiter(@site.average_income , :delimiter => ',')  %></p>
+             <strong>Brand Logo</strong>
+            <p><%= image_tag(@site.logo_url(:site_logo)) %></p>
+            <strong>Brand Color</strong>
+            <p><%= @site.color %></p>
+          </div>
+        </div>
+      </div>
+   	<div class="col-lg-8">
+    <%= link_to 'Edit', edit_site_path(@site) %> |
+	<%= link_to 'Back', sites_path %>
+   </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>

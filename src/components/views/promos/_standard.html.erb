@@ -1,0 +1,28 @@
+<% @promos.where(promo_type: "standard").each do |promo| %>
+    <tr>
+      	<td class="company"><%= promo.order_id == nil ? @site.name : promo.order.company %></td>
+      	<td class="text"><div class="text-center"><%= promo.emoji %> <a href="<%= promo.link %>"><u><strong> <%= promo.headline %></strong></u></a></div>
+          	<div class="text-center"><%= promo.text %></div><a href="<%= promo.link %>"><div class="text-center pt-1"><span class="font-xs"><u>LEARN MORE &raquo;</u></span></div></a>
+      	</td>
+      	<td><span class="badge badge-default">Standard</span></td>
+        <td><%= number_with_precision(promo.total_reads, :precision => 0, :delimiter => ',') %></td>
+        <td><%= number_with_precision(promo.total_clicks, :precision => 0, :delimiter => ',') %></td>
+      	<td><%= link_to '', edit_promo_path(promo.id), class: 'icon-pencil text-muted' %></td>
+     	  <td><%= link_to '', promo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-close text-muted' %></td>
+    </tr>
+<% end %>
+
+<% @promos.where(promo_type: "standard").standard_count.times do |count| %>
+  <tr>
+      <td class="company">
+      <%= select_tag :house_promo_select,
+      options_for_select(@house_promos.collect{ |u| [u.headline, u.id] }),
+      prompt: "Select a house promo",
+      class: 'form-control',
+      id: 'standard_' + count.to_s + '_house_promo' %>
+    </td>
+      <td class="text"></td>
+      <td><span id="promo_type" class="badge badge-default">Standard</span></td>
+      <td colspan="4"></td>
+  </tr>
+<% end %>

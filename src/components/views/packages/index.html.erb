@@ -1,0 +1,17 @@
+<% if !user_signed_in? %>
+  <!-- Public view -->
+  <%= render 'packages/logged_out_landing' %>
+<% else %>
+  <!-- Client and Admin view -->
+  <%= render 'packages/logged_in_landing' %>
+<% end %>
+
+
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<%= javascript_include_tag('packages') %>

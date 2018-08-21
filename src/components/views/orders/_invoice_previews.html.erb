@@ -1,0 +1,29 @@
+<% if @order.promos.any? %>
+	<% if @order.promos.where(promo_type: 'standard').where.not(date: ' ').any? || @order.promos.where(promo_type:'event').where.not(date: ' ').any? %>
+		<div class="card">
+			<div class="card-header">
+				How your standard and/or event promotions will appear:
+			</div>
+			<div class="card-block">
+			<div class="text-center"><%= @order.emoji %> <a href="<%= @order.link %>" style="color: #6DC6DD"><u><strong> <%= @order.headline %></strong></u></a></div>
+			<div class="text-center"><%= @order.promo %></div><a href="<%= @order.link %>"><div class="text-center pt-1"><span class="font-xs" style="color: #6DC6DD"><u>LEARN MORE &raquo;</u></span></div></a>
+			</div>
+		</div>
+	<% end %>
+
+	<% if @order.promos.where(promo_type: 'topline').where.not(date: ' ').any? %>
+		<div class="card">
+			<div class="card-header">
+				How your title promotions will appear
+			</div>
+			<div class="card-block">
+				<% if !image_tag(@order.logo_url (:thumb)).nil? %>
+				  <div style="float:left; padding-right: 13px"><%= image_tag(@order.logo_url (:thumb)) %></div>
+				<% end %>
+				<div><%= @order.emoji %> <a href="<%= @order.link %>" style="color: #6DC6DD"><strong><u> <%= @order.headline %></u></strong></a></div>
+				<div><%= @order.promo %></div>
+				<div><a href="<%= @order.link %>"><span class="font-xs" style="color:#6DC6DD"><u>LEARN MORE &raquo;</u></span></a></div>
+			</div>
+		</div>
+	<% end %>
+<% end %>

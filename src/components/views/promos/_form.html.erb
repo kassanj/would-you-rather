@@ -1,0 +1,62 @@
+<%= form_for(@promo, html: { multipart: true }) do |f| %>
+  <% if @promo.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @promo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+   <div class="col-md-12">
+     <div class="field pt-1">
+       <%= f.label :headline, 'Headline' %><br>
+       <%= f.text_field :headline, class: "form-control", id: "promo_headline", maxlength: "50", placeholder: "Write the headline for your promotion." %>
+       <p class="small hidden text-danger m-0">Required</p>
+       <h6 class="small text-right" id="count_message_headline" style="padding: 0.3rem"></h6>
+     </div>
+    <div class="field pt-1">
+      <%= f.label :text, 'Promotion Text' %><br>
+      <%= f.text_area :text, class: "form-control", id: "promo_text", maxlength: "150", style: "height: 100px", placeholder: "Write the copy for your promotion." %>
+      <p class="small hidden text-danger m-0">Required</p>
+      <h6 class="small text-right" id="count_message" style="padding: 0.3rem"></h6>
+    </div>
+    <div class="field pb-1">
+    <%= f.label :link %><br>
+    <%= f.text_field :link, class: "form-control", id: "promo_link", placeholder: "Add the link destination you want people to click on." %>
+    <p class="small hidden text-danger">Required</p>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="field pb-1">
+          <%= f.label :emoji %><br>
+          <p class="emoji-picker-container">
+            <%= f.text_field :emoji, class: "form-control", id: "promo_emoji", maxlength: "1", data: { emojiable: true }, placeholder: 'Select an emoji.' %>
+          </p>
+          <p class="small hidden text-danger">Please select 1 character.</p>
+        </div>
+      </div>
+    </div>
+      <% if @promo.promo_type == 'topline' %>
+    <div class="field">
+      <%= f.label :logo, 'Image' %><br>
+      <p class="form-text text-muted">* This image will only be used for your title promotion.</p>
+      <%= f.file_field :logo, id: "promo_logo" %>
+      <p class="form-text text-muted">Upload an image that will be included in your promotion. Due to e-mail size constraints, we only accept 300x300 logos at this time.</p>
+      <p id="err_orderlogo" class="small hidden text-danger" style="padding-top: 0.3rem">Please upload a logo.</p>
+      <p class="small hidden text-danger size" style="padding-top: 0.3rem">This logo doesn't match our size requirements.</p>
+    </div>
+    <% end %>
+  </div>
+  </div>
+
+  <%= render 'promos/datepickers', :f => f %>
+
+  <button type="submit" id="update_button" class="btn btn-primary">Update</button>
+
+</div>
+</div>
+
+<% end %>

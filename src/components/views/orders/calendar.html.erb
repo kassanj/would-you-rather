@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header" style="padding-top: 19px">
+        <h3 id="month" style="float:left">
+          <%= link_to "<", date: @date.prev_month %>
+          <%= @date.strftime("%B %Y") %>
+          <%= link_to ">", date: @date.next_month %>
+        </h3>
+        <div style="float:right">
+          <h6><%= @site.name %></h6>
+          <% if current_user.sites.count > 1 %>
+            <%= select_tag "city", options_from_collection_for_select(current_user.sites, :city, :name), prompt: "Select another site", id: "select" %>
+          <% end %>
+        </div>
+    </div>
+    <div class="card-block">
+      <div id="dates">
+
+      <%= calendar @date do |date| %>
+          <%= link_to date.day, by_date_path(date) %>
+            <% if @wbu_t[date] %>
+              <ul>
+                <% @wbu_t[date].each do |promo| %>
+                  <% if promo.order_id.nil? %>
+                    <li><%= @site.name %></li>
+                  <% else %>
+                   <li class="title_date_cal">  <%= link_to (truncate promo.order.company, :length => 20, :separator => /\w/, :omission => "..."), by_date_path(date) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+
+            <% if @wbu_s[date] %>
+              <ul>
+                <% @wbu_s[date].each_with_index do |promo, i| %>
+                  <% if promo.order_id.nil? %>
+                    <li><%= @site.name %></li>
+                  <% else %>
+                   <li class="date_inventory_cal"><%= i + 1 %>. <%= link_to (truncate promo.order.company, :length => 20, :separator => /\w/, :omission => "..."), by_date_path(date) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+
+            <% if @wbu_e[date] %>
+              <ul>
+                <% @wbu_e[date].each do |promo, i| %>
+                  <% if promo.order_id.nil? %>
+                    <li><%= @site.name %></li>
+                  <% else %>
+                   <li class="event_date_cal">  <%= link_to (truncate promo.order.company, :length => 20, :separator => /\w/, :omission => "..."), by_date_path(date) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function(){
+  $('#select').change( function() {
+    document.location.href = '/calendar/' + $('option:selected', this).val();
+  });
+});
+</script>

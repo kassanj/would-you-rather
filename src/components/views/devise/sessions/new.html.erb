@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 col-centered mx-auto pull-xs-none vamiddle">
+      <% flash.each do |key, value| %>
+      <% case key%>
+        <% when "notice" %>
+            <div class='alert alert-success' role="alert"><%= value %>
+        <% when "alert" %>
+            <div class='alert alert-danger' role="alert"><%= value %>
+        <% when "error" %>
+            <div class='alert alert-danger' role="alert"><%= value %>
+         <% else %>
+            <div class='alert alert-info' role="alert"><%= value %>
+        <% end %>
+        <a href="#" data-dismiss="alert" class="close">×</a></div>
+      <% end %>
+      <div class="card-group ">
+        <div class="card p-2" style="border:none">
+          <div class="card-block">
+          <h1>Login</h1>
+          <p class="text-muted">Sign In to your account</p>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
+           <div class="input-group mb-1">
+            <span class="input-group-addon"><i class="icon-user"></i></span>
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"  %>
+          </div>
+
+          <div class="input-group mb-2">
+           <span class="input-group-addon"><i class="icon-lock"></i></span>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control",placeholder: "Password" %>
+          </div>
+          <div class="row">
+           <div class="col-6">
+              <%= f.button "Login", class: "btn btn-primary px-2", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Logging in..."} %>
+          </div>
+          <div class="col-6 text-right">
+               <%= link_to "Forgot password?", new_password_path(resource_name), class: "btn btn-link px-0" %>
+          </div>
+          </div>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

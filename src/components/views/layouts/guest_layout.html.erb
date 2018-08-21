@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhereBy.Us | Advertising</title>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" rel="stylesheet" >
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application", "#{STRIPE_JS_HOST}/v2/" %>
+  <%= Gon::Base.render_data %>
+  <%= tag :meta, :name => 'stripe-key', :content => ENV['STRIPE_PUBLIC_KEY'] %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.11.1/validate.min.js"></script>
+  <script>
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+  analytics.load("<%= ENV['SEGMENT_TRACKER'] %>");
+  analytics.page();
+  }}();
+ </script>
+
+</head>
+<body class="app guest-view footer-fixed">
+  <header class="app-header navbar">
+    <a class="navbar-brand-guest wbu-logo-lrg hidden-md-down" href="/"></a>
+     <a class="navbar-brand-guest wbu-logo-sm hidden-lg-up" href="/"></a>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item px-1">
+        <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item px-1">
+        <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+      </li>
+    </ul>
+  </header>
+  <!-- Main content -->
+  <main class="main">
+    <%= yield %>
+  </main>
+  <footer class="app-footer" style="background-color: white;">
+    <span class="footer-link float-right pr-1"> &copy; 2017 <a href="http://whereby.us">WhereBy.Us</a></span>
+    <span class="footer-link float-right pr-1"><%= link_to 'Terms and Conditions', terms_path %></span>
+  </footer>
+</body>
+</html>
+
+ <script>
+  function verticalAlignMiddle(){
+    var bodyHeight = $(window).height();
+    var formHeight = $('.vamiddle').height();
+    var marginTop = (bodyHeight / 3) - (formHeight / 3);
+    if (marginTop > 0)
+    {
+        $('.vamiddle').css('margin-top', marginTop);
+    }
+  }
+  $(document).ready(function()
+  {
+      verticalAlignMiddle();
+  });
+  $(window).bind('resize', verticalAlignMiddle);
+</script>

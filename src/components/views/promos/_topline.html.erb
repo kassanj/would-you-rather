@@ -1,0 +1,37 @@
+<% if !@promos.where(promo_type: "topline").exists? %>
+
+	<tr>
+			<td class="company">
+			<%= select_tag :house_promo_select,
+			options_for_select(@house_promos.collect{ |u| [u.headline, u.id] }),
+			prompt: "Select a house promo",
+			class: 'form-control',
+			id: 'topline_house_promo' %>
+		</td>
+			<td class="text"></td>
+			<td><span id="promo_type" class="badge badge-warning">Topline</span></td>
+      <td colspan="4"></td>
+	</tr>
+
+<% else %>
+
+	<% @promos.where(promo_type: "topline").each do |promo| %>
+		<tr>
+			<td class="company"><%= promo.order_id == nil ? @site.name  : promo.order.company %></td>
+			<td class="text">
+				<% if !image_tag(promo.logo_url (:thumb), class: 'thumb-size').nil? %>
+			  		<div class="logo"><%= image_tag(promo.logo_url(:thumb), class: 'thumb-size') %></div>
+				<% end %>
+			  	<div><%= promo.emoji %> <a href="<%= promo.link %>"><strong><u> <%= promo.headline %></u></strong></a></div>
+			  	<div><%= promo.text %></div>
+			  	<div><a href="<%= promo.link %>"><span class="font-xs"><u>LEARN MORE &raquo;</u></a></div>
+			</td>
+			<td><span class="badge badge-warning">Topline</span></td>
+			<td><%= number_with_precision(promo.total_reads, :precision => 0, :delimiter => ',') %></td>
+			<td><%= number_with_precision(promo.total_clicks, :precision => 0, :delimiter => ',') %></td>
+			<td><%= link_to '', edit_promo_path(promo.id), class: 'icon-pencil text-muted' %></td>
+	    <td><%= link_to '', promo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-close text-muted' %></td>
+		</tr>
+	<% end %>
+
+<% end %>

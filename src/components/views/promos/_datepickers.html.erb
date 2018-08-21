@@ -1,0 +1,29 @@
+<h4 class="pt-1">Schedule your promotions</h4>
+
+<% if @promo.promo_type == 'standard' %>
+    <div id="date_inventories" class="field py-1">
+    <h6><label>Standard Promotions</label> <a href="#" class="text-muted" data-toggle="tooltip" data-html="true" data-placement="right" title="<%= render :partial => 'shared/promos/promo' %>"><i class="fa fa-question-circle" aria-hidden="true"></i></a></h6>
+    <p class="form-text text-muted">Please select a date.</p>
+      <div id="datepicker"></div>
+      <%= f.hidden_field :date, id: 'date_hidden_input', placeholder: "Select Date" %>
+      <p class="small hidden text-danger" style="padding-top:0.3rem">Incomplete! Select <span></span> more date(s).</p>
+    </div>
+<% elsif @promo.promo_type == 'topline' %>
+    <div id="title_dates" class="field py-1">
+    <h6><label>Title Promotions</label> <a href="#" class="text-muted" data-toggle="tooltip" data-html="true" data-placement="right" title="<br><%= render :partial => 'shared/promos/title' %>"><i class="fa fa-question-circle" aria-hidden="true"></i></a></h6>
+    <p class="form-text text-muted">Please select select a date.</p>
+
+    <div id="titledatepicker"></div>
+      <%= f.hidden_field :date, id:'title_hidden_input', placeholder: "Select Date"%>
+      <p class="small hidden text-danger" style="padding-top:0.3rem">Incomplete! Select <span></span> more date(s).</p>
+    </div>
+<% else %>
+    <div id="event_dates" class="field py-1">
+      <h6><label>Event Promotions</label> <a href="#" class="text-muted" data-toggle="tooltip" data-html="true" data-placement="right" title="<br><%= render :partial => 'shared/promos/event' %>"><i class="fa fa-question-circle" aria-hidden="true"></i></a></h6>
+     <p class="form-text text-muted">Please select a date.</p>
+
+    <div id="eventdatepicker"></div>
+      <%= f.hidden_field :date, id:'event_hidden_input', placeholder: "Select Date"%>
+      <p class="small hidden text-danger" style="padding-top:0.3rem">Incomplete! Select <span></span> more date(s).</p>
+    </div>
+<% end %>

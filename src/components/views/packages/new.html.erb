@@ -1,0 +1,5 @@
+<% if current_user.is_client? %>
+  <%= render 'client_custom_package' %>
+<% else %>
+  <%= render 'admin_new_package' %>
+<% end %>

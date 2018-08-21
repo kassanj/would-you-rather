@@ -1,0 +1,85 @@
+<%= form_for @order, html: { multipart: true } do |f| %>
+	<% if @order.errors.any? %>
+		<div class="alert alert-danger" role="alert">
+			<h5>Error(s) prohibited this order from being saved:</h5>
+				<ul>
+					<% @order.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+		</div>
+	<% end %>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-header">
+				Order a package
+			</div>
+			<div class="card-block">
+				<div class="field py-1">
+					<label for="name">Company / Organization</label>
+					<%= f.text_field :company, class: "form-control", id:'order_company' %>
+					<p class="small hidden text-danger">Required</p>
+				</div>
+
+				<%= render 'orders/form_promo_text', :f => f %>
+
+				<% if current_page?(action: 'show') %>
+					<%= f.hidden_field :package_id, value: @package.id %>
+				<% else %>
+					<%= f.hidden_field :package_id %>
+				<% end %>
+
+				<%= render 'orders/form_promo_datepickers', :f => f %>
+
+			</div>
+		</div>
+	</div> <!-- 1st column ends -->
+	<div class="col-sm-6">
+
+		<div class="card">
+			<div class="card-block p-1 clearfix">
+				<div class="mb-1"><%= @package.name %> Review</div>
+
+				<ul class="order-details">
+					<li>Newletter: <%= to_cities(@package.site_ids, prefix: '') %></li>
+				    <% if @package.promo != 0 %>
+				    	<li><%= pluralize(@package.promo, 'Standard promotion')%></li>
+				    <%end%>
+				    <% if @package.title != 0 %>
+						<li><%= pluralize(@package.title, 'Title promotion')%></li>
+					<%end%>
+					 <% if @package.event != 0 %>
+						<li><%= pluralize(@package.event, 'Event promotion')%></li>
+					<%end%>
+					<li>Price: <strong><%= number_to_currency(@package.price) %></strong></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header">
+				<% if @package.price > 0 && current_user.is_client? %>
+					Payment
+				<% else %>
+					Submit
+				<% end %>
+			</div>
+				<div class="card-block">
+					<% if @package.price > 0 && current_user.is_client? %>
+						<%= render 'orders/form_purchase' %>
+					<% end %>
+					<%= f.submit 'Place Your Order', class: "btn btn-primary", id: 'contactbtn' %>
+				</div>
+			</div>
+		</div> <!-- 2nd column ends -->
+
+	</div><!--  row ends -->
+<% end %><!--  form ends -->
+
+
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+</script>

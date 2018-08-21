@@ -1,0 +1,23 @@
+
+<%= simple_form_for @contact, html: {class: 'form-horizontal', id: 'contact_form' } do |f| %>
+  <div class="row">
+    <div class="col-sm-12">                     
+       <div class="field mb-1">
+        <%= f.text_field :name, class: "form-control", placeholder: "Full Name" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-12">                     
+        <div class="field mb-1">
+          <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+      </div>
+    </div>
+  <div class="field mb-1">
+      <%= f.text_area :message, class: "form-control", id: "contact_message", style: "height: 100px", placeholder: "Your Message"  %>
+  </div>
+
+  <button type="submit" class="btn btn-primary" id="submit_message" >Submit</button>
+  <div id="flash" style="float:right"></div>
+<% end %>

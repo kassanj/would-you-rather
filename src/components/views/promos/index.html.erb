@@ -1,0 +1,37 @@
+
+<div class="container">
+  <div class="card" style="margin-top: 12px; margin-right: 0">
+    <div class="card-header">
+       House Promotions
+    </div>
+    <div class="card-block">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Headline</th>
+            <th>Text</th>
+            <th>Emoji</th>
+            <th>Link</th>
+            <th>Logo</th>
+            <th>Newsletter</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @promos.each do |promo| %>
+          <tr>
+            <td><%= promo.headline %></td>
+            <td><%= promo.text %></td>
+            <td><%= promo.emoji %></td>
+            <td><%= promo.link %></td>
+            <td><%= image_tag(promo.logo_url(:thumb), class: 'thumb-size') %></td>
+            <th><%= promo.get_sites %></th>
+            <th><%= edit_icon(edit_house_promo_path(promo)) %></th>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= link_to 'Add House Promo', new_house_promo_path, class: "btn btn-primary", style: "float: right; margin-top: 2px; max-width: 150px" %>
+</div>

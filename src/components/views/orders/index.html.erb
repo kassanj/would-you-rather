@@ -1,0 +1,76 @@
+<div class="container">
+
+  <%= form_tag orders_path, class: "form-inline my-4 my-lg-0", method: :get do %>
+    <%= text_field_tag 'company', params[:company], type: "search", placeholder: "Enter client name", class: "form-control" %>
+    <%= submit_tag 'Search!', class: "btn btn-primary my-2" %>
+  <% end %>
+
+
+  <div class="card">
+    <div class="card-header">
+      Orders
+
+      <div class="float-right">
+        <%= button_to "Download", orders_path+'.csv', method: :get, class:'btn btn-primary btn-sm' %>
+      </div>
+      <hr>
+      <%= paginate @orders %>
+
+    </div>
+    <div class="card-block">
+      <table class="table table-outline table-hover table-striped">
+        <thead class="thead-default">
+          <tr>
+            <th style="width:100px">#</th>
+            <th>Client</th>
+            <th>Submitted On</th>
+            <th>Submitted By</th>
+            <th>Package</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr data-link="<%= order_path(order) %>">
+             <td><%= link_to order.id, order %> </td>
+            <% if ! order.company.nil? %>
+              <td><%= order.company %></td>
+              <td><%= order.created_at.strftime("%m/%d/%Y") %></td>
+            <% else %>
+              <td colspan="2"></td>
+            <% end %>
+
+            <% if ! order.user.nil? %>
+              <td><%= order.user.first_name %> <%= order.user.last_name %></td>
+            <% else %>
+              <td> -- </td>
+            <% end %>
+
+            <% if order.package_id.nil? %>
+              <td colspan="2"></td>
+            <% else %>
+              <% n = order.package_id %>
+              <% u = Package.find(n) %>
+
+              <td><%= u.name %>
+                <div class="small">
+                <%= to_cities(u.site_ids, prefix: 'Used by ') %>
+                </div>
+              </td>
+
+              <td><%= number_to_currency(order.package.price.to_i) %></td>
+              <td><strong><%= number_to_currency(order.final_amount.to_i / 100) %></strong></td>
+            <% end %>
+            <td><%= link_to '', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-close text-muted' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>

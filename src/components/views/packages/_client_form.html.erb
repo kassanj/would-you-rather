@@ -1,0 +1,37 @@
+<%= form_for(@package) do |f| %>
+  <% if @package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
+      <ul>
+        <% @package.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="form-group col-sm-4">
+        <label>Standard</label>
+         <%= f.number_field :promo, class: "form-control wbu_quantity", id: "wbu_s", min: 0  %>
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Event</label>
+        <%= f.number_field :event, class: "form-control wbu_quantity", id: "wbu_e", min: 0  %>
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Topline</label>
+        <%= f.number_field :title, class: "form-control wbu_quantity", id: "wbu_t", min: 0  %>
+    </div>
+  </div><br>
+
+  <%= f.hidden_field :name, value: 'Custom Package' %>
+  <%= f.hidden_field :price %>
+  <%= f.hidden_field :display, value: 'custom' %>
+
+  <%= collection_check_boxes(:package, :site_ids, current_user.sites, :id, :name) do |b| %>
+    <% b.check_box(class: 'form-check-input', checked: 'checked', style: 'visibility:hidden') %>
+  <% end %>
+
+  <%= f.button 'Create New Package', value: "Submit", class: "btn btn-primary", data: {"disable-with" => "<i class='fa fa-spinner fa-spin'></i> Creating..."} %>
+<% end %>

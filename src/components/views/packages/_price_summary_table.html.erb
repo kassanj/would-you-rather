@@ -1,0 +1,43 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+     <td>Type</td>
+     <td>Quantity</td>
+     <td></td>
+     <td>Unit Price</td>
+     <td>Total Price</td>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>Standard</td>
+    <td id="wbu_s_count">0</td>
+    <td>x</td>
+    <td>$<span id="wbu_s_unit_cost"><%= number_with_precision(@site.wbu_s_price, precision: 0) %></span></td>
+    <td>$<span id="wbu_s_final_cost">0</td>
+  </tr>
+
+  <tr>
+    <td>Event</td>
+    <td id="wbu_e_count">0</td>
+    <td>x</td>
+    <td>$<span id="wbu_e_unit_cost"><%= number_with_precision(@site.wbu_e_price, precision: 0) %></span></td>
+    <td>$<span id="wbu_e_final_cost">0</td>
+  </tr>
+
+  <tr>
+   <td>Topline</td>
+   <td id="wbu_t_count">0</td>
+   <td>x</td>
+   <td>$<span id="wbu_t_unit_cost"><%= number_with_precision(@site.wbu_t_price, precision: 0) %></span></td>
+   <td>$<span id="wbu_t_final_cost">0</td>
+ </tr>
+ <tr>
+  <td><strong>Total Package Cost</strong></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><strong>$<span id="wbu_package_final_cost">0<strong></td>
+ </tr>
+  </tbody>
+</table>

@@ -1,0 +1,83 @@
+<%= form_for(@coupon) do |f| %>
+  <% if @coupon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
+      <ul>
+        <% @coupon.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row"> 
+    <div class="col-sm-6">                 
+      <div class="form-group">
+        <label>Code</label>
+        <%= f.text_field :code, class: "form-control", placeholder: "ex. MIAMI305" %>
+      </div>
+    </div>
+  </div>
+
+    <!--/row-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Notes</label>
+        <%= f.text_field :description, class: "form-control", placeholder: "What or who is this coupon for?"  %>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+   <div class="col-sm-6">
+    <div class="form-group">
+    <label class="form-control-label" for="appendedPrependedInput">Percentage</label>
+      <div class="controls">
+        <div class="input-prepend input-group">
+            <%= f.text_field :amount, class: "form-control"  %>
+            <span class="input-group-addon">%</span>
+        </div> 
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!--/row-->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="field pb-1">
+    	  <label>Redemption Limit</label>
+    	  <%= f.number_field :redemption_limit, class: "form-control"  %>
+      </div>
+    </div>
+  </div>
+
+	<!--/row-->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+  	    <label>Valid From</label>
+  	    <%= f.date_field :valid_from, class: "form-control"  %>
+      </div>
+    </div>
+  </div>
+
+  	<!--/row-->
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+      	<label>Valid Until</label>
+      	<%= f.date_field :valid_until, class: "form-control"  %>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button><br>
+<% end %>
+
+
+
+ 

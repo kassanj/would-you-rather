@@ -1,0 +1,28 @@
+Thanks for signing up for a promotions account!
+
+Welcome <%= @user.first_name %>,
+
+Thanks for signing up! You can login, place orders, check your account, and view existing orders.
+Please confirm your account email by clicking the link below:
+<%= confirmation_url(@resource, confirmation_token: @token) %>
+
+For reference, here's your account information:
+Name: <%= @user.full_name %>
+Company: <%= @user.company %>
+Email: <%= @user.email %>
+Newsletter: <% @user.site_ids.each do |f| %><%= Site.find(f).name %> <% end %>
+
+If you have any questions, drop us a line anytime at sales@whereby.us.
+
+We look forward to working with you,
+
+<%= @user.set_site_name %>
+
+
+
+© 2017 WhereBy.Us. All rights reserved.
+
+WhereBy.Us
+1951 NW 7th Avenue
+Suite 600
+Miami, Florida 33136
