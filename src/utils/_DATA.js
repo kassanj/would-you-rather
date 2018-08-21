@@ -2,7 +2,7 @@ let users = {
   kassandra: {
     id: 'kmeyer',
     name: 'Kassandra Meyer',
-    avatarURL: ,
+    avatarURL: null,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -14,7 +14,7 @@ let users = {
   coco: {
     id: 'cvilla',
     name: 'Coco Villa',
-    avatarURL: ,
+    avatarURL: null,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: ,
+    avatarURL: null,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
