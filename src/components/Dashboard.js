@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Nav from './Nav'
-import Leaderboard from './Leaderboard'
 
+import Home from './Home'
+import Login from './Login'
 
 class Dashboard extends Component {
 
   render() {
+
+    {/* Add Login conditional   */}
+
     return (
+
       <div>
-        <Nav />
-        <Leaderboard />
+        <Home />
+        <Login />
       </div>
     )
   }

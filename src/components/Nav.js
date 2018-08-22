@@ -4,14 +4,31 @@ import React, { Component } from 'react'
 
   return (
     <nav className='nav'>
-      <ul>
+      <ul className='navbar-left'>
         <li>
             Home
         </li>
         <li>
             New Question
         </li>
+        <li>
+            Leaderboard
+        </li>
       </ul>
+
+      {/* Hide section below when app is logged-out  */}
+
+      <ul className='navbar-right'>
+        <li>
+            Hello!
+            {/* Add Logged-in user's name */}
+        </li>
+        <li>
+            Logout
+        </li>
+      </ul>
+
+
     </nav>
   )
 }

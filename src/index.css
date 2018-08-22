@@ -20,6 +20,16 @@ a {
   padding: 10px;
 }
 
+.navbar-left {
+    float: left!important;
+    margin-left: 15px;
+}
+
+.navbar-right {
+    float: right!important;
+    margin-right: 15px;
+}
+
 .btn {
   text-transform: uppercase;
   margin: 35px auto;
@@ -49,6 +59,10 @@ a {
 
 .active {
   font-weight: bold;
+}
+
+.nav {
+  overflow: hidden
 }
 
 .nav ul {
