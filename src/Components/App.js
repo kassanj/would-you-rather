@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
-import logo from './logo.svg';
+// import LoadingBar from 'react-redux-loading'
+// import logo from './logo.svg';
 
 class App extends Component {
 
@@ -12,11 +13,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Dashboard />
-      </div>
+        <div className="App">
+          {this.props.loading === true
+           ? 'Loading...'
+           : <Dashboard /> }
+        </div>
     );
   }
 }
 
-export default connect()(App);
+
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)
