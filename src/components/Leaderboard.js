@@ -12,4 +12,11 @@ class Leaderboard extends Component {
   }
 }
 
-export default connect()(Leaderboard)
+function mapStateToProps ({ users }) {
+  return {
+    ...users,
+    // orderedUsers: ,
+  }
+}
+
+export default connect(mapStateToProps)(Leaderboard)

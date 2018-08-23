@@ -8,7 +8,7 @@ import Dashboard from './Dashboard'
 import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard'
-// import LoadingBar from 'react-redux-loading'
+import LoadingBar from 'react-redux-loading'
 // import logo from './logo.svg';
 
 class App extends Component {
@@ -21,11 +21,12 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <LoadingBar style={{ backgroundColor: 'blue', height: '2px' }} />
             <div className="App">
-              <Nav />
               {this.props.loading === true
-               ? 'Loading...'
+               ? null
                : <div>
+                  <Nav />
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/question/:id' component={QuestionPage} />
                   <Route path='/add' component={NewQuestion} />
