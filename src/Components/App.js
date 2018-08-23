@@ -9,7 +9,6 @@ import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard'
 import LoadingBar from 'react-redux-loading'
-// import logo from './logo.svg';
 
 class App extends Component {
 
