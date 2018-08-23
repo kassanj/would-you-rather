@@ -49,7 +49,7 @@ function mapStateToProps ({ users, authedUser }) {
   return {
     ...users,
     authedUser: Object.keys(users)
-        .filter((a) => users[a].id == authedUser)
+        .filter((a) => a == authedUser)
         .map((a) => users[a].name )
   }
 }
