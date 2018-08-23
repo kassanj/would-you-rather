@@ -13,11 +13,18 @@ class Dashboard extends Component {
     return (
 
       <div>
-        <Home />
-        <Login />
+        {this.props.authedId === null
+         ? <Login />
+         : <Home /> }
       </div>
     )
   }
 }
 
-export default connect()(Dashboard)
+function mapStateToProps ({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)
