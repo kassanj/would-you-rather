@@ -1,34 +1,50 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
- export default function Nav () {
+class Nav extends Component {
 
-  return (
-    <nav className='nav'>
-      <ul className='navbar-left'>
-        <li>
-            Home
-        </li>
-        <li>
-            New Question
-        </li>
-        <li>
-            Leaderboard
-        </li>
-      </ul>
+  render() {
 
-      {/* Hide section below when app is logged-out  */}
+    return (
+      <div>
+        <nav className='nav'>
+          <ul className='navbar-left'>
+            <li>
+                Home
+            </li>
+            <li>
+                New Question
+            </li>
+            <li>
+                Leaderboard
+            </li>
+          </ul>
 
-      <ul className='navbar-right'>
-        <li>
-            Hello!
-            {/* Add Logged-in user's name */}
-        </li>
-        <li>
-            Logout
-        </li>
-      </ul>
+          { this.props.authedId === null
+           ? null
+           :
+            <ul className='navbar-right'>
+              <li>
+                  Hello, {this.props.authedUser}!
+              </li>
+              <li>
+                  Logout
+              </li>
+            </ul>
+          }
 
-
-    </nav>
-  )
+        </nav>
+      </div>
+    )
+  }
 }
+function mapStateToProps ({ users, authedUser }) {
+  return {
+    ...users,
+    authedUser: Object.keys(users)
+        .filter((a) => users[a].id == authedUser)
+        .map((a) => users[a].name )
+  }
+}
+
+export default connect(mapStateToProps)(Nav)
