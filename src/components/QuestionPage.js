@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import FourOFour from './FourOFour';
 
 class QuestionPage extends Component {
   render() {
 
-    const { targetQuestion } = this.props
+
+    const { targetQuestion, errorPage } = this.props
+
+    if (errorPage) {
+      return (
+        <FourOFour />
+      );
+    }
 
     return (
       <div>
@@ -16,10 +24,20 @@ class QuestionPage extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
-  const { id } = props.match.params
+
+  if (questions[props.match.params.id] === undefined) {
+    const errorPage = true
+    return {
+      errorPage,
+    };
+  }
+
+  const pageId = props.match.params.id
+  const errorPage = false
 
   return {
-    targetQuestion: questions[id]
+    targetQuestion: questions[pageId],
+    errorPage
   }
 }
 
