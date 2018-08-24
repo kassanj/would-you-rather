@@ -24,21 +24,23 @@ class Leaderboard extends Component {
 }
 
 function mapStateToProps({ users }) {
+
   const userDetails = Object.keys(users)
     .map((user) => {
-      const tempUserDetails = {
+      const userDeets = {
         image: users[user].avatarURL,
         name: users[user].name,
         questionsAnswered: Object.keys(users[user].answers).length,
         questionsCreated: users[user].questions.length,
       };
-      const rank = tempUserDetails.questionsAnswered + tempUserDetails.questionsCreated;
-      tempUserDetails.rank = rank;
-      return (tempUserDetails);
+      const rank = userDeets.questionsAnswered + userDeets.questionsCreated;
+      userDeets.rank = rank;
+      return (userDeets);
     })
     .sort((a, b) => (
       b.rank - a.rank
     ));
+
   return {
     userDetails,
   };

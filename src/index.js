@@ -4,9 +4,11 @@ import './index.css';
 import App from './components/App';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 
 import reducers from './reducers'
 import middleware from './middleware'
+
 
 const store = createStore(reducers, middleware)
 

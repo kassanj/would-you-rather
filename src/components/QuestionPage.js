@@ -4,10 +4,15 @@ import Question from './Question'
 import FourOFour from './FourOFour';
 
 class QuestionPage extends Component {
+
   render() {
 
+    const { targetQuestion, errorPage, userAnswers } = this.props
+    let answered = null
 
-    const { targetQuestion, errorPage } = this.props
+    if ( targetQuestion ) {
+       answered = userAnswers.includes(targetQuestion.id)
+    }
 
     if (errorPage) {
       return (
@@ -15,11 +20,22 @@ class QuestionPage extends Component {
       );
     }
 
-    return (
-      <div>
-        <Question question={targetQuestion} />
-      </div>
-    )
+    if (answered) {
+      return (
+        <div>
+          <Question key={targetQuestion.id} status="PollResults" question={targetQuestion} />
+        </div>
+      )
+    }
+
+    if (!answered) {
+      return (
+        <div>
+          <Question key={targetQuestion.id} status="PollVoting" question={targetQuestion} />
+        </div>
+      )
+    }
+
   }
 }
 
@@ -37,7 +53,8 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
 
   return {
     targetQuestion: questions[pageId],
-    errorPage
+    errorPage,
+    userAnswers: Object.keys(users[authedUser].answers)
   }
 }
 
