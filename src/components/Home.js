@@ -1,31 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Question from './Question'
 
 class Home extends Component {
   render() {
 
-    const { answeredQuestions, unansweredQuestions } = this.props
+    const { answeredQuestions, unansweredQuestions, questions} = this.props
 
     return (
       <div>
         <h3 className='center'>Answered Questions</h3>
         <ul className='dashboard-list'>
-
           {answeredQuestions.map((question) => (
-            <li key={question.id}>
-              <div>QUESTION ID: {question.id}</div>
-              <div>{question.author}</div>
-            </li>
+            <Question key={question.id} question={question} />
           ))}
         </ul>
         <h3 className='center'>Unanswered Questions</h3>
         <ul className='dashboard-list'>
-
           {unansweredQuestions.map((question) => (
-            <li key={question.id}>
-              <div>QUESTION ID: {question.id}</div>
-              <div>{question.author}</div>
-            </li>
+            <Question key={question.id} question={question} />
           ))}
         </ul>
       </div>
@@ -35,7 +28,7 @@ class Home extends Component {
 
 function mapStateToProps ({ authedUser, questions, users }) {
   return {
-    ...questions,
+    questions,
     ...users,
     authedUser,
 
@@ -47,8 +40,8 @@ function mapStateToProps ({ authedUser, questions, users }) {
 
     unansweredQuestions: Object.keys(questions)
        .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
-       .filter( a => questions[a].optionOne.votes.indexOf(users[authedUser].id) == -1 &&
-      questions[a].optionTwo.votes.indexOf(users[authedUser].id) == -1 )
+       .filter( a => questions[a].optionOne.votes.indexOf(users[authedUser].id) === -1 &&
+      questions[a].optionTwo.votes.indexOf(users[authedUser].id) === -1 )
       .map((a) => questions[a] )
   }
 }

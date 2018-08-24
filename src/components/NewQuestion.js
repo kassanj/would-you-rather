@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { addQuestionAction } from '../actions/shared'
 import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
@@ -11,20 +12,14 @@ class NewQuestion extends Component {
     toHome: false,
   }
 
-  handleOptionOneChange = (e) => {
-    const optOne = e.target.value
+  handleChange = function(event, optionIndex) {
+    const text = event.target.value;
 
-    this.setState(() => ({
-      optionOne: optOne,
-    }))
-  }
-
-  handleOptionTwoChange = (e) => {
-    const optTwo = e.target.value
-
-    this.setState(() => ({
-      optionTwo: optTwo,
-    }))
+    this.setState(function(previousState) {
+      return optionIndex === 1
+        ? { ...previousState, 'optionOne': text }
+        : { ...previousState, 'optionTwo': text };
+    });
   }
 
   handleSubmit = (e) => {
@@ -33,7 +28,7 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo } = this.state
     const { dispatch, id } = this.props
 
-    dispatch(handleAddQuestion(optionOne, optionTwo))
+    dispatch(addQuestionAction('kassandra', optionOne, optionTwo))
 
     this.setState(() => ({
       optionOne: '',
@@ -61,14 +56,14 @@ class NewQuestion extends Component {
           <textarea
             placeholder="Option 1"
             value={optionOne}
-            onChange={this.handleOptionOneChange}
+            onChange={(event) => this.handleChange(event, 1)}
             className='textarea1'
           />
 
           <textarea
             placeholder="Option 2"
             value={optionTwo}
-            onChange={this.handleOptionTwoChange}
+            onChange={(event) => this.handleChange(event, 2)}
             className='textarea2'
           />
 

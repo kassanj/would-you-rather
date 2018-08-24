@@ -47,9 +47,8 @@ class Nav extends Component {
 }
 function mapStateToProps ({ users, authedUser }) {
   return {
-    ...users,
     authedUser: Object.keys(users)
-        .filter((a) => a == authedUser)
+        .filter((a) => a === authedUser)
         .map((a) => users[a].name )
   }
 }
