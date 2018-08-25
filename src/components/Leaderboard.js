@@ -11,10 +11,10 @@ class Leaderboard extends Component {
         <ul className='dashboard-list'>
           {userDetails.map(user => (
            <li key={user.id}>
-                <div>{user.image}</div>
-                <div>{user.name}</div>
-                <div>{user.questionsAnswered}</div>
-                <div>{user.questionsCreated}</div>
+              <div>{user.image}</div>
+              <div>{user.name}</div>
+              <div>Answered: {user.questionsAnswered}</div>
+              <div>Questions: {user.questionsCreated}</div>
            </li>
           ))}
         </ul>
