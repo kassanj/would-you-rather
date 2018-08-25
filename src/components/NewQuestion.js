@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { addQuestionAction } from '../actions/shared'
-import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
 
@@ -28,7 +27,7 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo } = this.state
     const { dispatch, id } = this.props
 
-    dispatch(addQuestionAction('kassandra', optionOne, optionTwo))
+    dispatch(addQuestionAction(optionOne, optionTwo))
 
     this.setState(() => ({
       optionOne: '',
@@ -76,7 +75,6 @@ class NewQuestion extends Component {
         </form>
       </div>
     )
-
 
   }
 }
