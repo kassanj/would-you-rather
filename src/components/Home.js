@@ -5,19 +5,19 @@ import Question from './Question'
 class Home extends Component {
   render() {
 
-    const { answeredQuestions, unansweredQuestions, questions} = this.props
+    const { notAnsweredQIds, answeredQIds, questions} = this.props
 
     return (
       <div>
         <h3 className='center'>Answered Questions</h3>
         <ul className='dashboard-list'>
-          {answeredQuestions.map((question) => (
+          {answeredQIds.map((question) => (
             <Question key={question} status="GeneralView" question={question}/>
           ))}
         </ul>
         <h3 className='center'>Unanswered Questions</h3>
         <ul className='dashboard-list'>
-          {unansweredQuestions.map((question) => (
+          {notAnsweredQIds.map((question) => (
             <Question key={question} status="GeneralView" question={question} />
           ))}
         </ul>
@@ -27,23 +27,20 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions, users }) {
-  return {
-    questions,
-    ...users,
-    authedUser,
 
-    answeredQuestions: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
-      .filter( a => questions[a].optionOne.votes.includes(users[authedUser].id) ||
-     questions[a].optionTwo.votes.includes(users[authedUser].id))
-      .map((a) => questions[a] ),
+      const notAnsweredQuestions = Object.values(questions).filter((question) =>
+          !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser))
 
-    unansweredQuestions: Object.keys(questions)
-       .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
-       .filter( a => questions[a].optionOne.votes.indexOf(users[authedUser].id) === -1 &&
-      questions[a].optionTwo.votes.indexOf(users[authedUser].id) === -1 )
-      .map((a) => questions[a] )
-  }
+      const answeredQuestions = Object.values(questions).filter((question) =>
+          question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
+      )
+
+      return {
+          notAnsweredQIds: Object.values(notAnsweredQuestions)
+              .sort((a, b) => b.timestamp - a.timestamp).map((q) => q),
+          answeredQIds: Object.values(answeredQuestions)
+              .sort((a, b) => b.timestamp - a.timestamp).map((q) => q)
+      }
 }
 
 export default connect(mapStateToProps)(Home)
