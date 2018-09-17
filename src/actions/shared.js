@@ -1,4 +1,4 @@
-import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
+import { getAuthUsers, getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { getUsers, addUserQuestion } from '../actions/users'
 import { getQuestions, addQuestion } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
@@ -21,9 +21,24 @@ export function handleInitialData () {
   }
 }
 
+export function handleSetAuthUser(id) {
+  return (dispatch) => {
+    dispatch(showLoading());
+
+    return getAuthUsers()
+      .then((users) => {
+        const auth = Object.keys(users).filter(user => user === id);
+        auth.length === 0 ?
+          dispatch(setAuthedUser(null)) :
+          dispatch(setAuthedUser(id));
+      })
+      .then(() => dispatch(hideLoading()));
+  };
+}
+
 export function addQuestionAction (optOne, optTwo) {
   return (dispatch, getState) => {
-    
+
     const { authedUser } = getState();
     dispatch(showLoading())
 
