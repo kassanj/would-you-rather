@@ -8,7 +8,7 @@ class FeedView extends Component {
     const { question } = this.props
 
     return (
-       <li>
+       <li key={question.id}>
          <b>FeedView</b>
 
          <Link to={`/question/${question.id}`} exact='true' activeclassname='active'>

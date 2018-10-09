@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { removeAuthedUser } from '../actions/authedUser';
+
 
 class Nav extends Component {
+
+  logout = (e) => {
+    e.preventDefault()
+    const { dispatch } = this.props
+    dispatch(removeAuthedUser())
+  }
 
   render() {
 
@@ -35,9 +43,8 @@ class Nav extends Component {
               <li>
                   Hello, {this.props.authedUser}!
               </li>
-              <li>
+              <li onClick={e => this.logout(e)}>
                   Logout
-                  // onClick ---> trigger Logout action
               </li>
             </ul>
           </nav>

@@ -12,13 +12,13 @@ class Home extends Component {
         <h3 className='center'>Answered Questions</h3>
         <ul className='dashboard-list'>
           {answeredQIds.map((question) => (
-            <Question key={question} status="GeneralView" question={question}/>
+            <Question key={question.id} status="GeneralView" question={question}/>
           ))}
         </ul>
         <h3 className='center'>Unanswered Questions</h3>
         <ul className='dashboard-list'>
           {notAnsweredQIds.map((question) => (
-            <Question key={question} status="GeneralView" question={question} />
+            <Question key={question.id} status="GeneralView" question={question} />
           ))}
         </ul>
       </div>
