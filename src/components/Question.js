@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import PollResults from './QuestionViews/PollResults'
 import PollVoting from './QuestionViews/PollVoting'
 import FeedView from './QuestionViews/FeedView'
@@ -43,8 +42,6 @@ class Question extends Component {
            />
          );
        }
-
-
   }
 }
 

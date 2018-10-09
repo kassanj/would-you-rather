@@ -29,8 +29,6 @@ class Login extends Component {
   }
 }
 
-// onClick --> setUserAuthed
-
 function mapStateToProps({ users }) {
   const userBank = Object.keys(users)
     .map((user) => {

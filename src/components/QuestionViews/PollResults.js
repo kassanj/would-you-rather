@@ -10,7 +10,7 @@ class PollResults extends Component {
 
     return (
        <li>
-         <b>PollResults</b>
+         <b>Poll Results</b>
          <div>{question.id}</div>
          <div>{question.author}</div>
          <div>{question.optionOne.text}</div>

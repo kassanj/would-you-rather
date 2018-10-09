@@ -4,11 +4,8 @@ import { getQuestions, addQuestion } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-const AUTHED_ID = 'kassandra';
-
 export function handleInitialData () {
   return (dispatch) => {
-
     dispatch(showLoading())
 
     return getInitialData()
@@ -16,6 +13,7 @@ export function handleInitialData () {
         dispatch(getUsers(users))
         dispatch(getQuestions(questions))
         dispatch(hideLoading())
+        dispatch(setAuthedUser('coco')) // REMOVE AFTER I FINISH STYLING
       })
   }
 }

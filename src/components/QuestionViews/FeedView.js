@@ -9,8 +9,7 @@ class FeedView extends Component {
 
     return (
        <li key={question.id}>
-         <b>FeedView</b>
-
+         <b>Feed View</b>
          <Link to={`/question/${question.id}`} exact='true' activeclassname='active'>
            <div>{question.id}</div>
            <div>{question.author}</div>

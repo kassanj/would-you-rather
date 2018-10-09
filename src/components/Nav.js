@@ -13,9 +13,7 @@ class Nav extends Component {
   }
 
   render() {
-
     return (
-
       <div>
         { this.props.authedUser === null
          ? null
@@ -38,7 +36,6 @@ class Nav extends Component {
                 </NavLink>
               </li>
             </ul>
-
             <ul className='navbar-right'>
               <li>
                   Hello, {this.props.authedUser}!

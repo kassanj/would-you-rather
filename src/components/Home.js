@@ -5,7 +5,7 @@ import Question from './Question'
 class Home extends Component {
   render() {
 
-    const { notAnsweredQIds, answeredQIds, questions} = this.props
+    const { notAnsweredQIds, answeredQIds } = this.props
 
     return (
       <div>
