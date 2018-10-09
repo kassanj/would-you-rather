@@ -8,12 +8,10 @@ class Dashboard extends Component {
 
   render() {
 
-    {/* Add Login conditional   */}
-
     return (
 
       <div>
-        {this.props.authedId === null
+        {this.props.authedUser === null
          ? <Login />
          : <Home /> }
       </div>
@@ -21,9 +19,11 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ users, authedUser }) {
   return {
-    authedUser
+    authedUser: authedUser == null ? authedUser : Object.keys(users)
+        .filter((a) => a === authedUser)
+        .map((a) => users[a].name )
   }
 }
 

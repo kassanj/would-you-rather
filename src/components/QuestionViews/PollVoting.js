@@ -26,13 +26,13 @@ class PollVoting extends Component {
 
     return (
        <li>
-         <b>PollVoting</b>
+         <b>Poll Voting</b>
          <div>{question.id}</div>
          <div>{question.author}</div>
          <div>Created: {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(question.timestamp)}</div>
          <button onClick={this.handleOptionOne}>{question.optionOne.text}</button>
          <button onClick={this.handleOptionTwo}>{question.optionTwo.text}</button>
-   </li>
+       </li>
     )
   }
 }
