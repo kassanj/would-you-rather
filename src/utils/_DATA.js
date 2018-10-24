@@ -2,7 +2,7 @@ let users = {
   kassandra: {
     id: 'kassandra',
     name: 'Kassandra Meyer',
-    avatarURL: null,
+    avatarURL: 'https://whereby.us/wp-content/uploads/2018/01/KassandraMeyer.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -11,26 +11,40 @@ let users = {
     },
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
-  coco: {
-    id: 'coco',
-    name: 'Coco Villa',
-    avatarURL: null,
+  margaret: {
+    id: 'margaret',
+    name: 'Margaret Hamilton',
+    avatarURL: 'https://cdn.vox-cdn.com/thumbor/ERQrpoAInp9fMlC2n_J9-7klaiE=/86x0:716x473/1400x1400/filters:focal(86x0:716x473):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/46431942/Margaret_Hamilton_in_action.0.0.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
-  johndoe: {
-    id: 'johndoe',
-    name: 'John Doe',
-    avatarURL: null,
+  jean: {
+    id: 'jean',
+    name: 'Jean Sammet',
+    avatarURL: 'https://cacm.acm.org/system/assets/0002/7071/041717__Ben_Shneiderman_Sammet.large.jpeg?1492457307&1492457307',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
       "6ni6ok3ym7mf1p33lnez": 'optionOne'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  },
+  ada: {
+    id: 'ada',
+    name: 'Ada Lovelace',
+    avatarURL: 'https://www.biography.com/.image/t_share/MTE4MDAzNDEwODQwOTQ2MTkw/ada-lovelace-20825279-1-402.jpg',
+    answers: {},
+    questions: [],
+  },
+  hedy: {
+    id: 'hedy',
+    name: 'Hedy Lamarr',
+    avatarURL: 'https://www.womenshistory.org/sites/default/files/styles/4_up_card/public/images/2018-09/Lamarr%20square.jpg?itok=gfMOSbgq',
+    answers: {},
+    questions: [],
   }
 }
 
@@ -50,14 +64,14 @@ let questions = {
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
-    author: 'johndoe',
+    author: 'jean',
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['johndoe', 'kassandra'],
+      votes: ['jean', 'kassandra'],
       text: 'become a supervillian'
     }
   },
@@ -76,7 +90,7 @@ let questions = {
   },
   "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
-    author: 'coco',
+    author: 'margaret',
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
@@ -89,27 +103,27 @@ let questions = {
   },
   "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
-    author: 'coco',
+    author: 'margaret',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['coco'],
+      votes: ['margaret'],
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: ['jean'],
       text: 'have your best friend find $500'
     }
   },
   "xj352vofupe1dqz9emx13r": {
     id: 'xj352vofupe1dqz9emx13r',
-    author: 'johndoe',
+    author: 'jean',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe'],
+      votes: ['jean'],
       text: 'write JavaScript',
     },
     optionTwo: {
-      votes: ['coco'],
+      votes: ['margaret'],
       text: 'write Swift'
     }
   },

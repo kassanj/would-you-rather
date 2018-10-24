@@ -19,7 +19,7 @@ class Login extends Component {
            { userBank.map(user => (
             <li key={user.id}
                 onClick={ e => this.login(e, user.id)}>
-               <div>{user.image}</div>
+               <img src={user.image} class="avatar-img" />
                <div>{user.name}</div>
             </li>
            )) }

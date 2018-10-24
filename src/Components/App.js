@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import '../../node_modules/grommet-css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
