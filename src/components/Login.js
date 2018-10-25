@@ -4,7 +4,8 @@ import { handleSetAuthUser } from '../actions/shared';
 
 class Login extends Component {
 
-  login = (e, id) => {
+  handleLogin = (e, id) => {
+    e.preventDefault()
     const { dispatch } = this.props;
     dispatch(handleSetAuthUser(id));
   }
@@ -15,11 +16,14 @@ class Login extends Component {
 
      return (
        <div>
+         <h2>Login</h2>
+         <p>Please select a user to login.</p>
+         <p>Only logged users can submit a vote. Do not miss out on the fun!</p>
          <ul className='dashboard-list'>
            { userBank.map(user => (
             <li key={user.id}
-                onClick={ e => this.login(e, user.id)}>
-               <img src={user.image} class="avatar-img" />
+                onClick={ e => this.handleLogin(e, user.id)}>
+               <img src={user.image} className="avatar" />
                <div>{user.name}</div>
             </li>
            )) }

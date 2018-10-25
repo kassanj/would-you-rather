@@ -2,25 +2,62 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
 
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+
+
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
 class Home extends Component {
+
+  state = {
+    value: 0,
+  };
+
+  handleChange = (e, value) => {
+    this.setState({ value });
+  };
+
   render() {
 
     const { notAnsweredQIds, answeredQIds } = this.props
+    const { value } = this.state;
 
     return (
       <div>
-        <h3 className='center'>Answered Questions</h3>
-        <ul className='dashboard-list'>
-          {answeredQIds.map((question) => (
-            <Question key={question.id} status="GeneralView" question={question}/>
-          ))}
-        </ul>
-        <h3 className='center'>Unanswered Questions</h3>
-        <ul className='dashboard-list'>
-          {notAnsweredQIds.map((question) => (
-            <Question key={question.id} status="GeneralView" question={question} />
-          ))}
-        </ul>
+        <AppBar position="static" color="default">
+          <Tabs
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              scrollable
+              scrollButtons="auto"
+            >
+              <Tab label="Unanswered" />
+              <Tab label="Answered" />
+            </Tabs>
+          </AppBar>
+          {value === 0 &&
+          <TabContainer>
+            {notAnsweredQIds.map((question) => (
+              <Question key={question.id} status="GeneralView" question={question} />
+            ))}
+          </TabContainer>}
+          {value === 1 &&
+            <TabContainer>
+              {answeredQIds.map((question) => (
+                <Question key={question.id} status="GeneralView" question={question}/>
+              ))}
+            </TabContainer>}
       </div>
     )
   }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { addQuestionAction } from '../actions/shared'
+import TextField from '@material-ui/core/TextField';
+
 
 class NewQuestion extends Component {
 
@@ -51,21 +53,34 @@ class NewQuestion extends Component {
         <h4 className='center'>Would you rather...?</h4>
 
         <form className='new-tweet' onSubmit={this.handleSubmit}>
-
-          <textarea
-            placeholder="Option 1"
-            value={optionOne}
-            onChange={(event) => this.handleChange(event, 1)}
-            className='textarea1'
-          />
-
-          <textarea
-            placeholder="Option 2"
-            value={optionTwo}
-            onChange={(event) => this.handleChange(event, 2)}
-            className='textarea2'
-          />
-
+          <div>
+          <span className='option-input'>
+            <TextField
+               id="outlined-multiline-flexible"
+               label="Option One"
+               multiline
+               rowsMax="4"
+               value={optionOne}
+               onChange={(event) => this.handleChange(event, 1)}
+               className='textarea1'
+               margin="normal"
+               variant="outlined"
+             />
+           </span>
+           <span className='option-input'>
+             <TextField
+                id="outlined-multiline-flexible"
+                label="Option Two"
+                multiline
+                rowsMax="4"
+                value={optionTwo}
+                onChange={(event) => this.handleChange(event, 2)}
+                className='textarea2'
+                margin="normal"
+                variant="outlined"
+              />
+            </span>
+          </div>
           <button
             className='btn'
             type='submit'

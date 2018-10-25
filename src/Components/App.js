@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import '../../node_modules/grommet-css'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 
@@ -10,6 +9,8 @@ import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard'
 import Login from './Login'
+import AddButton from './AddButton'
+import ExclusiveRoute from './ExclusiveRoute'
 import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
@@ -28,11 +29,14 @@ class App extends Component {
                ? null
                : <div>
                   <Nav />
-                  <Route path='/' exact component={Dashboard} />
-                  <Route path="/login" exact component={Login} />
-                  <Route path='/question/:id' component={QuestionPage} />
-                  <Route path='/add' component={NewQuestion} />
-                  <Route path='/leaderboard' component={Leaderboard} />
+                  <Link to="/add"><AddButton /></Link>
+                  <Switch>
+                    <Route path='/' exact component={Dashboard} />
+                    <Route path="/login" exact component={Login} />
+                    <ExclusiveRoute path='/question/:id' component={QuestionPage} />
+                    <ExclusiveRoute path='/add' component={NewQuestion} />
+                    <ExclusiveRoute path='/leaderboard' component={Leaderboard} />
+                  </Switch>
                 </div> }
             </div>
         </Fragment>

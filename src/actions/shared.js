@@ -13,7 +13,7 @@ export function handleInitialData () {
         dispatch(getUsers(users))
         dispatch(getQuestions(questions))
         dispatch(hideLoading())
-        dispatch(setAuthedUser('coco')) // REMOVE AFTER I FINISH STYLING
+        // dispatch(setAuthedUser('coco')) // REMOVE AFTER I FINISH STYLING
       })
   }
 }

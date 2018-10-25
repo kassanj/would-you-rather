@@ -8,10 +8,11 @@ class Leaderboard extends Component {
 
     return (
       <div>
+        <h2>Leaderboard</h2>
         <ul className='dashboard-list'>
           {userDetails.map(user => (
            <li key={user.id}>
-              <div>{user.image}</div>
+              <img src={user.image} className="avatar" />
               <div>{user.name}</div>
               <div>Answered: {user.questionsAnswered}</div>
               <div>Questions: {user.questionsCreated}</div>
@@ -28,7 +29,7 @@ function mapStateToProps({ users }) {
   const userDetails = Object.keys(users)
     .map((user) => {
       const userDeets = {
-        id: users[user].id, 
+        id: users[user].id,
         image: users[user].avatarURL,
         name: users[user].name,
         questionsAnswered: Object.keys(users[user].answers).length,

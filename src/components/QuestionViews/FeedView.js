@@ -9,12 +9,9 @@ class FeedView extends Component {
 
     return (
        <li key={question.id}>
-         <b>Feed View</b>
          <Link to={`/question/${question.id}`} exact='true' activeclassname='active'>
-           <div>{question.id}</div>
-           <div>{question.author}</div>
-           <div>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(question.timestamp)}</div>
-         </Link>
+           <div>{question.optionOne.text}</div> or <div>{question.optionTwo.text}</div> 
+        </Link>
       </li>
     )
   }
