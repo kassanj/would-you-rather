@@ -17,7 +17,7 @@ const styles = theme => ({
 class AddButton extends Component {
 
   render() {
-   console.log(this.state)
+
    const { authedUser, classes } = this.props;
 
    return (

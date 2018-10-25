@@ -14,8 +14,6 @@ import Avatar from '@material-ui/core/Avatar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -48,6 +46,7 @@ class Nav extends Component {
 
   render() {
 
+
    const { authedUser, authedUserAvatar, classes } = this.props;
    const { anchorEl } = this.state;
    const open = Boolean(anchorEl);
@@ -61,7 +60,7 @@ class Nav extends Component {
               <IconButton color="inherit" aria-label="Menu">
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit" >
+              <Typography variant="h6" color="inherit" style={{paddingLeft: 15}}>
                   Would You Rather
               </Typography>
               <div className={classes.absolute}>
@@ -79,7 +78,7 @@ class Nav extends Component {
                   onClick={this.handleMenu}>
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit" >
+              <Typography variant="h6" color="inherit" style={{paddingLeft: 15}}>
                   Would You Rather
               </Typography>
 
@@ -101,7 +100,7 @@ class Nav extends Component {
                </Menu>
 
               <div className={classes.absolute}>
-                <Avatar src={authedUserAvatar} className="avatar-small" alt={authedUser} />
+                <Avatar src={authedUserAvatar[0]} className="avatar-small" />
              </div>
             </ToolBar>
          </AppBar>

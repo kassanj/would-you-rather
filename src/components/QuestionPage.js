@@ -7,7 +7,7 @@ class QuestionPage extends Component {
 
   render() {
 
-    const { targetQuestion, errorPage, userAnswers, authedUser } = this.props
+    const { targetQuestion, errorPage, userAnswers } = this.props
     let answered = null
 
     if ( targetQuestion ) {
@@ -52,7 +52,6 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
   const errorPage = false
 
   return {
-    authedUser,
     targetQuestion: questions[pageId],
     errorPage,
     userAnswers: Object.keys(users[authedUser].answers)

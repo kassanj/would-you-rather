@@ -12,7 +12,7 @@ class Leaderboard extends Component {
         <ul className='dashboard-list'>
           {userDetails.map(user => (
            <li key={user.id}>
-              <img src={user.image} className="avatar" />
+              <img src={user.image} className="avatar" alt={user.name} />
               <div>{user.name}</div>
               <div>Answered: {user.questionsAnswered}</div>
               <div>Questions: {user.questionsCreated}</div>
