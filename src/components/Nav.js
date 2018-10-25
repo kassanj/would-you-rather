@@ -21,7 +21,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     absolute: {
-      position: 'fixed',
+      position: 'absolute',
       right: theme.spacing.unit * 3,
     },
 });
