@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleQuestionAnswer} from '../../actions/shared'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+    width: 250,
+  },
+  input: {
+    display: 'none',
+  },
+});
 
 class PollVoting extends Component {
 
@@ -22,16 +34,28 @@ class PollVoting extends Component {
 
   render() {
 
-    const { question } = this.props
+    const { question, classes, authorName } = this.props
 
     return (
        <li>
-         <h2>Poll Voting</h2>
-         <button onClick={this.handleOptionOne}>{question.optionOne.text}</button>
-         <button onClick={this.handleOptionTwo}>{question.optionTwo.text}</button>
+         <h2>Voting 🗳️</h2>
+         <p>Select an option below.</p>
+           <Button variant="outlined"
+                   color="primary"
+                   onClick={this.handleOptionOne}
+                   className={classes.button}>
+             {question.optionOne.text}
+           </Button>
+           <Button variant="outlined"
+                   color="primary"
+                   onClick={this.handleOptionTwo}
+                   className={classes.button}>
+             {question.optionTwo.text}
+           </Button>
        </li>
     )
   }
 }
 
-export default connect()(PollVoting)
+
+export default connect()(withStyles(styles)(PollVoting))

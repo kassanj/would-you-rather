@@ -13,6 +13,7 @@ import AddButton from './AddButton'
 import ExclusiveRoute from './ExclusiveRoute'
 import LoadingBar from 'react-redux-loading'
 
+
 class App extends Component {
 
   componentDidMount() {

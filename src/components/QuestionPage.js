@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import Author from './Author';
 import FourOFour from './FourOFour';
 
 class QuestionPage extends Component {
 
   render() {
 
-    const { targetQuestion, errorPage, userAnswers } = this.props
+    const { targetQuestion, errorPage, userAnswers, authorName, authorImageUrl} = this.props
     let answered = null
 
     if ( targetQuestion ) {
@@ -24,6 +25,7 @@ class QuestionPage extends Component {
       return (
         <div>
           <Question key={targetQuestion.id} status="PollResults" question={targetQuestion} />
+          <Author key={targetQuestion.id} authorName={authorName} authorImageUrl={authorImageUrl} />
         </div>
       )
     }
@@ -32,6 +34,7 @@ class QuestionPage extends Component {
       return (
         <div>
           <Question key={targetQuestion.id} status="PollVoting" question={targetQuestion} />
+          <Author key={targetQuestion.id} authorName={authorName} authorImageUrl={authorImageUrl} />
         </div>
       )
     }
@@ -48,10 +51,15 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
     };
   }
 
+  const userName = questions[props.match.params.id].author;
+  const authorName = authedUser === userName ? 'you' : users[userName].name;
+  const authorImageUrl = users[userName].avatarURL;
   const pageId = props.match.params.id
   const errorPage = false
 
   return {
+    authorName,
+    authorImageUrl,
     targetQuestion: questions[pageId],
     errorPage,
     userAnswers: Object.keys(users[authedUser].answers)

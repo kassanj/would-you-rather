@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
 .App {
   text-align: center;
 }
@@ -5,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Work Sans', sans-serif;
   color: #252525;
 }
 
@@ -106,6 +109,10 @@ li {
 
 textarea {
   padding: 15px
+}
+
+.user-welcome {
+  display: none
 }
 
 /* .option-input {

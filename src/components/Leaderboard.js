@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const styles = {
+  card: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 275,
+  }
+};
+
+
 class Leaderboard extends Component {
   render() {
 
-   const { userDetails } = this.props
+   const { userDetails, classes } = this.props
 
     return (
       <div>
@@ -12,10 +29,20 @@ class Leaderboard extends Component {
         <ul className='dashboard-list'>
           {userDetails.map(user => (
            <li key={user.id}>
-              <img src={user.image} className="avatar" alt={user.name} />
-              <div>{user.name}</div>
-              <div>Answered: {user.questionsAnswered}</div>
-              <div>Questions: {user.questionsCreated}</div>
+                <Card className={classes.card}>
+                  <CardContent>
+                    <Typography color="textSecondary" gutterBottom>
+                    </Typography>
+                    <Typography variant="h5" component="h2">
+                      {user.name}
+                    </Typography>
+                    <img src={user.image} className="avatar" alt={user.name} />
+                    <Typography component="p">
+                      <div>Answered {user.questionsAnswered} questions</div>
+                      <div>Posted {user.questionsCreated} questions</div>
+                    </Typography>
+                  </CardContent>
+                </Card>
            </li>
           ))}
         </ul>
@@ -48,5 +75,4 @@ function mapStateToProps({ users }) {
   };
 }
 
-
-export default connect(mapStateToProps)(Leaderboard)
+export default connect(mapStateToProps)(withStyles(styles)(Leaderboard))

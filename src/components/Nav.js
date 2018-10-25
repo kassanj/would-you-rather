@@ -14,6 +14,7 @@ import Avatar from '@material-ui/core/Avatar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Hidden from '@material-ui/core/Hidden';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -22,6 +23,10 @@ const styles = theme => ({
       position: 'absolute',
       right: theme.spacing.unit * 3,
     },
+    relative: {
+      right: theme.spacing.unit * 3,
+      paddingLeft: 10, 
+    }
 });
 
 class Nav extends Component {
@@ -64,7 +69,7 @@ class Nav extends Component {
                   Would You Rather
               </Typography>
               <div className={classes.absolute}>
-                <AccountCircle className="avatar-small" />
+                <AccountCircle className="avatar-small" style={{flex: 1}}/>
              </div>
             </ToolBar>
          </AppBar>
@@ -78,7 +83,7 @@ class Nav extends Component {
                   onClick={this.handleMenu}>
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit" style={{paddingLeft: 15}}>
+              <Typography variant="h6" color="inherit" style={{paddingLeft: 15, textAlign: 'center'}}>
                   Would You Rather
               </Typography>
 
@@ -99,9 +104,14 @@ class Nav extends Component {
                  </Link>
                </Menu>
 
-              <div className={classes.absolute}>
-                <Avatar src={authedUserAvatar[0]} className="avatar-small" />
-             </div>
+                 <Typography variant="p" color="inherit" style={{flex: 1, size: 10, paddingLeft: 15, textAlign: 'right'}}>
+                  <Hidden smDown>
+                    Welcome, {authedUser}!
+                  </Hidden>
+                 </Typography>
+                  <div className={classes.relative}>
+                    <Avatar src={authedUserAvatar[0]} className="avatar-small" style={{flex: 1 }}/>
+                 </div>
             </ToolBar>
          </AppBar>
         }
