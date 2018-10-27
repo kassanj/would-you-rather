@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
@@ -93,6 +95,12 @@ class PollResults extends Component {
               </Typography>
            </CardContent>
          </Card>
+
+         <Link to={`/`} exact='true' activeclassname='active' className={classes.button}>
+           <Button variant="outlined" color="primary" size="large">
+               Return Home
+           </Button>
+         </Link>
        </div>
     )
   }
