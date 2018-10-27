@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PollResults from './QuestionViews/PollResults'
-import PollVoting from './QuestionViews/PollVoting'
-import FeedView from './QuestionViews/FeedView'
+import PollResults from './QuestionTemplates/PollResults'
+import PollVoting from './QuestionTemplates/PollVoting'
+import TabView from './QuestionTemplates/TabView'
 
-class Question extends Component {
+class Switch extends Component {
 
   render() {
 
-    const { id, question, status } = this.props
+    const { type, id, question, status } = this.props
 
     switch (status) {
        case 'PollResults':
@@ -25,24 +25,26 @@ class Question extends Component {
              question={question}
            />
          );
-       case 'GeneralView':
+       case 'TabView':
          return (
-           <FeedView
+           <TabView
              id={id}
              question={question}
              status={status}
+             type={type}
            />
          );
        default:
          return (
-           <FeedView
+           <TabView
              id={id}
              question={question}
              status={status}
+             type={type}
            />
          );
        }
   }
 }
 
-export default connect()(Question)
+export default connect()(Switch)

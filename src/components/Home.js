@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
-
+import Switch from './Switch'
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -49,13 +48,13 @@ class Home extends Component {
           {value === 0 &&
           <TabContainer>
             {notAnsweredQIds.map((question) => (
-              <Question key={question.id} status="GeneralView" question={question} />
+              <Switch key={question.id} status="TabView" type="unanswered" question={question} />
             ))}
           </TabContainer>}
           {value === 1 &&
             <TabContainer>
               {answeredQIds.map((question) => (
-                <Question key={question.id} status="GeneralView" question={question}/>
+                <Switch key={question.id} status="TabView" type="answered" question={question}/>
               ))}
             </TabContainer>}
       </div>

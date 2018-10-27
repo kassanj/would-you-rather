@@ -47,8 +47,8 @@ class NewQuestion extends Component {
     }
 
     return (
-      <div>
-
+      
+      <div style={{paddingTop: 15}}>
         <h2 className='center'>Add a new question</h2>
         <h4 className='center'>Would you rather...?</h4>
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import Switch from './Switch'
 import Author from './Author';
 import FourOFour from './FourOFour';
 
@@ -21,23 +21,12 @@ class QuestionPage extends Component {
       );
     }
 
-    if (answered) {
-      return (
-        <div>
-          <Question key={targetQuestion.id} status="PollResults" question={targetQuestion} />
-          <Author key={targetQuestion.id} authorName={authorName} authorImageUrl={authorImageUrl} />
-        </div>
-      )
-    }
-
-    if (!answered) {
-      return (
-        <div>
-          <Question key={targetQuestion.id} status="PollVoting" question={targetQuestion} />
-          <Author key={targetQuestion.id} authorName={authorName} authorImageUrl={authorImageUrl} />
-        </div>
-      )
-    }
+    return (
+      <div style={{paddingTop: 25}}>
+        <Switch key={targetQuestion.id} status={ !answered ? "PollVoting" : "PollResults" } question={targetQuestion} />
+        <Author authorName={authorName} authorImageUrl={authorImageUrl} />
+      </div>
+    )
 
   }
 }

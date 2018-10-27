@@ -34,11 +34,11 @@ class PollVoting extends Component {
 
   render() {
 
-    const { question, classes, authorName } = this.props
+    const { question, classes } = this.props
 
     return (
        <li>
-         <h2>Voting 🗳️</h2>
+         <h2>Voting <span role="img" aria-label="ballot">🗳️</span></h2>
          <p>Select an option below.</p>
            <Button variant="outlined"
                    color="primary"

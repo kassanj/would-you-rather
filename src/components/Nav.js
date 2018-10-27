@@ -25,7 +25,7 @@ const styles = theme => ({
     },
     relative: {
       right: theme.spacing.unit * 3,
-      paddingLeft: 10, 
+      paddingLeft: 10,
     }
 });
 
@@ -104,11 +104,12 @@ class Nav extends Component {
                  </Link>
                </Menu>
 
-                 <Typography variant="p" color="inherit" style={{flex: 1, size: 10, paddingLeft: 15, textAlign: 'right'}}>
+                 <Typography color="inherit" style={{flex: 1, size: 10, paddingLeft: 15, textAlign: 'right'}}>
                   <Hidden smDown>
                     Welcome, {authedUser}!
                   </Hidden>
                  </Typography>
+
                   <div className={classes.relative}>
                     <Avatar src={authedUserAvatar[0]} className="avatar-small" style={{flex: 1 }}/>
                  </div>

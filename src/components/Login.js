@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import compose from 'recompose/compose';
 import { handleSetAuthUser } from '../actions/shared';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -41,10 +40,10 @@ class Login extends Component {
     const { userBank, classes } = this.props
 
      return (
-       <div>
+
+       <div style={{paddingTop: 15}}>
          <h2>Login</h2>
          <p>Please select a user to login.</p>
-         <p>Only logged users can submit a vote. Do not miss out on the fun!</p>
 
            <ul className='dashboard-list'>
               { userBank.map(user => (

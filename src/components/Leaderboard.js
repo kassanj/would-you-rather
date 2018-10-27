@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -24,7 +22,7 @@ class Leaderboard extends Component {
    const { userDetails, classes } = this.props
 
     return (
-      <div>
+      <div style={{paddingTop: 15}}>
         <h2>Leaderboard</h2>
         <ul className='dashboard-list'>
           {userDetails.map(user => (
@@ -37,9 +35,11 @@ class Leaderboard extends Component {
                       {user.name}
                     </Typography>
                     <img src={user.image} className="avatar" alt={user.name} />
-                    <Typography component="p">
-                      <div>Answered {user.questionsAnswered} questions</div>
-                      <div>Posted {user.questionsCreated} questions</div>
+                    <Typography>
+                      Answered {user.questionsAnswered} questions
+                    </Typography>
+                    <Typography>
+                      Posted {user.questionsCreated} questions
                     </Typography>
                   </CardContent>
                 </Card>

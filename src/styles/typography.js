@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 import {
-  pitchDark, lightGrey, plainTurquoise, bianchiGreen,
+  lightGrey,
 } from './colors';
 
 const Title1 = styled.h1`
-  box-shadow: inset 0em -0.5em 0em ${bianchiGreen};
+  box-shadow: inset 0em -0.5em 0em ${lightGrey};
   color: ${lightGrey};
   font-size: 28px;
   font-weight: 700;
@@ -40,8 +40,8 @@ const BodyText = styled.p`
 `;
 
 const BodyLink = styled.a`
-  border-bottom: 0.25em solid ${bianchiGreen};
-  box-shadow: inset 0 -0.25em 0 ${bianchiGreen};
+  border-bottom: 0.25em solid ${lightGrey};
+  box-shadow: inset 0 -0.25em 0 ${lightGrey};
   color: inherit;
   text-decoration: none;
   transition: background 0.3s ease;
@@ -50,7 +50,7 @@ const BodyLink = styled.a`
   }
   &:hover {
     color: inherit;
-    background: ${bianchiGreen};
+    background: ${lightGrey};
   }
   &:active {
     color: inherit;

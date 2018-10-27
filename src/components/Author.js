@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Avatar from '@material-ui/core/Avatar'
-import { Title1, MetaText } from '../styles/typography';
+import { MetaText } from '../styles/typography';
 
 
 class Author extends Component {

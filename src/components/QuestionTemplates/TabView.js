@@ -30,24 +30,26 @@ const styles = {
 class FeedView extends Component {
   render() {
 
-    const { question, classes } = this.props
+    const { type, question, classes } = this.props
 
     return (
-       <li key={question.id}>
+        <li key={question.id}>
            <Card className={classes.card}>
              <CardContent>
-               <Typography color="textSecondary" gutterBottom>
-               </Typography>
-               <Typography variant="h5" component="h2">
+               <Typography component="p">
+                 {question.optionOne.text}
                </Typography>
                <Typography component="p">
-                 <div>{question.optionOne.text}</div> or <div>{question.optionTwo.text}</div>
+                   or
                </Typography>
+               <Typography component="p">
+                 {question.optionTwo.text}
+                </Typography>
              </CardContent>
              <CardActions className={classes.actions}>
                <Link to={`/question/${question.id}`} exact='true' activeclassname='active' className={classes.button}>
                  <Button variant="outlined" color="primary" size="large">
-                     Vote!
+                     { type === 'unanswered' ? 'Vote!' : 'See Results' }
                  </Button>
                </Link>
              </CardActions>

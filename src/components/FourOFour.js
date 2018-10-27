@@ -5,8 +5,8 @@ class FourOFour extends Component {
   render() {
 
     return (
-      <div>
-         <b>404</b>
+      <div style={{paddingTop: 35}}>
+         <h2>404</h2>
       </div>
     )
   }
