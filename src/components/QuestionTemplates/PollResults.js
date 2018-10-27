@@ -3,11 +3,8 @@ import { connect } from 'react-redux'
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import purple from '@material-ui/core/colors/purple';
 
 const styles = {
   card: {
@@ -62,7 +59,7 @@ class PollResults extends Component {
 
     return (
        <div>
-         <h2>Results</h2>
+         <h2>Results <span role="img" aria-label="ballot">📊</span></h2>
          <Card className={ answerOne.length > 0 ? classes.voted : classes.card }>
            <CardContent>
             <Typography className={ classes.voteText }>
