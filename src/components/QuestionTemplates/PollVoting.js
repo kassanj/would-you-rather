@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleQuestionAnswer} from '../../actions/shared'
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   button: {
@@ -40,6 +41,9 @@ class PollVoting extends Component {
        <li>
          <h2>Voting <span role="img" aria-label="ballot">🗳️</span></h2>
          <p>Select an option below.</p>
+         <Typography component="h4" style={{fontWeight: 700, textDecoration: 'uppercase', paddingBottom: 15, color: '#3f51b5'}}>
+            Would you rather...
+         </Typography>
            <Button variant="outlined"
                    color="primary"
                    onClick={this.handleOptionOne}

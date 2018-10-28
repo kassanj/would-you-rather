@@ -98,7 +98,7 @@ class PollResults extends Component {
 
          <Link to={`/`} exact='true' activeclassname='active' className={classes.button}>
            <Button variant="outlined" color="primary" size="large">
-               Return Home
+                Return Home
            </Button>
          </Link>
        </div>

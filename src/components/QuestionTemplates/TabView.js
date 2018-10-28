@@ -36,8 +36,8 @@ class FeedView extends Component {
         <li key={question.id}>
            <Card className={classes.card}>
              <CardContent>
-               <Typography component="p" style={{fontWeight: 700}}>
-                 Would you rather...
+               <Typography component="h4" style={{fontWeight: 700, textDecoration: 'uppercase', paddingBottom: 15, color: '#3f51b5'}}>
+                  Would you rather
                </Typography>
                <Typography component="p">
                  {question.optionOne.text}
