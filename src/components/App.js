@@ -4,13 +4,14 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 
 import Nav from './Nav'
-import Dashboard from './Dashboard'
 import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
 import Leaderboard from './Leaderboard'
 import Login from './Login'
+import Home from './Home'
 import AddButton from './AddButton'
-import ExclusiveRoute from './ExclusiveRoute'
+import PrivateRoute from './PrivateRoute'
+import FourOFour from './FourOFour'
 import LoadingBar from 'react-redux-loading'
 
 
@@ -23,25 +24,20 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Fragment>
-          <LoadingBar style={{ backgroundColor: 'blue', height: '2px' }} />
-            <div className="App">
-              {this.props.loading === true
-               ? null
-               : <div>
-                  <Nav />
-                  <Link to="/add"><AddButton /></Link>
-                  <Switch>
-                    <Route path='/' exact component={Dashboard} />
-                    <Route path="/login" exact component={Login} />
-                    <ExclusiveRoute path='/question/:id' component={QuestionPage} />
-                    <ExclusiveRoute path='/add' component={NewQuestion} />
-                    <ExclusiveRoute path='/leaderboard' component={Leaderboard} />
-                  </Switch>
-                </div> }
-            </div>
-        </Fragment>
-     </Router>
+          <div className="App">
+            <LoadingBar style={{ backgroundColor: 'blue', height: '2px' }} />
+            <Nav />
+            <Link to="/add"><AddButton /></Link>
+            <Switch>
+              <PrivateRoute path="/" exact component={Home} />
+              <Route path="/login" exact component={Login} />
+              <PrivateRoute path='/question/:id' exact component={QuestionPage} />
+              <PrivateRoute path='/add' exact component={NewQuestion} />
+              <PrivateRoute path='/leaderboard' exact component={Leaderboard} />
+              <PrivateRoute component = { FourOFour }/>
+            </Switch>
+         </div>
+       </Router>
     );
   }
 }

@@ -4,7 +4,7 @@ import PollResults from './QuestionTemplates/PollResults'
 import PollVoting from './QuestionTemplates/PollVoting'
 import TabView from './QuestionTemplates/TabView'
 
-class Switch extends Component {
+class QuestionSwitch extends Component {
 
   render() {
 
@@ -47,4 +47,4 @@ class Switch extends Component {
   }
 }
 
-export default connect()(Switch)
+export default connect()(QuestionSwitch)

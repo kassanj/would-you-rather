@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Switch from './Switch'
+import QuestionSwitch from './QuestionSwitch'
 import Author from './Author';
 import FourOFour from './FourOFour';
 
@@ -15,6 +15,8 @@ class QuestionPage extends Component {
        answered = userAnswers.includes(targetQuestion.id)
     }
 
+    console.log(errorPage)
+
     if (errorPage) {
       return (
         <FourOFour />
@@ -23,7 +25,7 @@ class QuestionPage extends Component {
 
     return (
       <div style={{paddingTop: 25}}>
-        <Switch key={targetQuestion.id} status={ !answered ? "PollVoting" : "PollResults" } question={targetQuestion} />
+        <QuestionSwitch key={targetQuestion.id} status={ !answered ? "PollVoting" : "PollResults" } question={targetQuestion} />
         <Author authorName={authorName} authorImageUrl={authorImageUrl} />
       </div>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-function ExclusiveRoute({ component: Component, ...rest }) {
+function PrivateRoute({ component: Component, ...rest }) {
 
   const { authedUser } = rest;
 
@@ -14,7 +14,7 @@ function ExclusiveRoute({ component: Component, ...rest }) {
         authedUser !== null
           ? <Component {...props} />
           : <Redirect to={{
-            pathname: '/',
+            pathname: '/login',
             state: { from: props.location },
           }}
           />
@@ -30,4 +30,4 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(ExclusiveRoute);
+export default connect(mapStateToProps)(PrivateRoute);

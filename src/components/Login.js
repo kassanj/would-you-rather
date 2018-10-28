@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom';
 import { handleSetAuthUser } from '../actions/shared';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -29,6 +30,10 @@ const styles = {
 
 class Login extends Component {
 
+  constructor(props) {
+     super(props);
+  }
+
   handleLogin = (e, id) => {
     e.preventDefault()
     const { dispatch } = this.props;
@@ -37,7 +42,14 @@ class Login extends Component {
 
   render() {
 
-    const { userBank, classes } = this.props
+     const { userBank, classes, authedUser, location } = this.props
+     const { from } = location.state || { from: { pathname: '/' } };
+
+     if (authedUser !== null) {
+       return (
+         <Redirect to={from} />
+       );
+     }
 
      return (
 
@@ -75,7 +87,8 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
+
   const userBank = Object.keys(users)
     .map((user) => {
       const userProperties = {
@@ -88,7 +101,8 @@ function mapStateToProps({ users }) {
       return userProperties;
     })
   return {
-    userBank
+    userBank,
+    authedUser
   };
 }
 
