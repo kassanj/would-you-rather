@@ -15,8 +15,6 @@ class QuestionPage extends Component {
        answered = userAnswers.includes(targetQuestion.id)
     }
 
-    console.log(errorPage)
-
     if (errorPage) {
       return (
         <FourOFour />

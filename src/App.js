@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { handleInitialData } from '../actions/shared'
-
-import Nav from './Nav'
-import QuestionPage from './QuestionPage'
-import NewQuestion from './NewQuestion'
-import Leaderboard from './Leaderboard'
-import Login from './Login'
-import Home from './Home'
-import AddButton from './AddButton'
-import PrivateRoute from './PrivateRoute'
-import FourOFour from './FourOFour'
 import LoadingBar from 'react-redux-loading'
+import { connect } from 'react-redux'
+import { handleInitialData } from './actions/shared'
+
+import Nav from './components//Nav'
+import QuestionPage from './components/QuestionPage'
+import NewQuestion from './components/NewQuestion'
+import Leaderboard from './components/Leaderboard'
+import Login from './components/Login'
+import Home from './components/Home'
+import AddButton from './components/AddButton'
+import PrivateRoute from './components/PrivateRoute'
+import FourOFour from './components/FourOFour'
 
 
 class App extends Component {
