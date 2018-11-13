@@ -11,10 +11,6 @@ $ npm install
 $ npm start
 ```
 
-## Previews
+## Views
 
-### Login
 
-### Homepage
-
-### Add Question Page
