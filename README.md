@@ -14,3 +14,8 @@ $ npm start
 ## Views
 ![alt text](https://github.com/kassanj/would-you-rather/blob/master/public/iphone-views.png)
 
+## Add Question
+![alt text](https://github.com/kassanj/would-you-rather/blob/master/public/add-question-mock.png)
+
+## Leaderboard
+![alt text](https://github.com/kassanj/would-you-rather/blob/master/public/leaderboard-mock.png)
