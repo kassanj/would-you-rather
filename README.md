@@ -12,5 +12,6 @@ $ npm start
 ```
 
 ## Views
-
+![alt text](https://github.com/kassanj/would-you-rather/public/iphone-views.png
+)
 
