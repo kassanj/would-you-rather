@@ -11,10 +11,6 @@ $ npm install
 $ npm start
 ```
 
-## Previews
+## Views
+![alt text](https://github.com/kassanj/would-you-rather/blob/master/public/iphone-views.png)
 
-### Login
-
-### Homepage
-
-### Add Question Page
